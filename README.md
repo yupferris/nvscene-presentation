@@ -8,3 +8,7 @@ yoloswag
  - Take Bent's advice: Yes, get into the tech details; no, that's not the main focus. The main focus is the problem-solving side of things - inspire people to look at things differently, try new things, and take new perspectives.
 
  - Remember that this is a good opportunity to show YOU and what YOU're all about, not just one thing you did. Brand yourself with being awesome rather than the project in the talk. RADNESS.
+
+ - Take inspiration also from the following talks:
+   - https://www.youtube.com/watch?v=ubaX1Smg6pY
+   - https://www.youtube.com/watch?v=rJosPrqBqrA
