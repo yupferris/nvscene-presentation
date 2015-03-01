@@ -12,3 +12,7 @@ yoloswag
  - Take inspiration also from the following talks:
    - https://www.youtube.com/watch?v=ubaX1Smg6pY
    - https://www.youtube.com/watch?v=rJosPrqBqrA
+
+ - Get gifs from:
+   - http://bits-and-pixels.tumblr.com/
+   - http://waneella.tumblr.com/
