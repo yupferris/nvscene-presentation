@@ -28,7 +28,7 @@ yoloswag
 
  - Remember that this is a good opportunity to show YOU and what YOU're all about, not just one thing you did. Brand yourself with being awesome rather than the project in the talk. RADNESS.
 
- - Use Reveal.js (http://slides.com/) for the actual slides, possible through https://github.com/fsprojects/FsReveal
+ - Use Reveal.js (http://slides.com/) for the actual slides, possibly through https://github.com/fsprojects/FsReveal
 
  - Take inspiration also from the following talks:
    - https://www.youtube.com/watch?v=ubaX1Smg6pY
