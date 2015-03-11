@@ -3,10 +3,11 @@ yoloswag
 
 ## Outline
  - Chronological order of events:
-   - Tried SNES dev at 17, couldn't do it
+   - Tried SNES dev at 15, couldn't do it
    - Did some C64 stuff, that was better
+   - Back to SNES, not much progress
    - Kickassembler
-   - Tried Atari VCS, music sucked
+   - Tried Atari VCS, made a custom sound driver, a few FX, but music sucked
    - Laptop stolen, tried Gameboy dev
    - Kickassembler too slow, custom assembler
    - Demon Blood
