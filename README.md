@@ -12,6 +12,14 @@ yoloswag
    - Kickassembler too slow, custom assembler
    - Demon Blood
    - Revamped assembler
+   - Started hand-coding FX for a demo
+     - Scrollers etc
+     - Mode7 rotozoomer
+     - Lots more ideas, but the workflow sucked
+   - Started designing awesome super snes tool
+     - Emulated video hardware
+     - Auto resource- and VRAM-management
+       - Try to find old sketch?
    - SNES tracker
    - Nu
      - Cramped for time
