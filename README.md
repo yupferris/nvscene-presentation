@@ -2,6 +2,32 @@
 yoloswag
 
 ## Outline
+ - Requirements for a demo
+   - Needs to run on SNES
+   - Has to have awesome music
+   - Has to have awesome sync
+   - Has to look great
+
+ - Typical oldschool demo development process
+   - Massive amounts of assembler
+
+ - Am I supposed to meet all of my requirements this way?
+   - Seriously? One coder in a reasonable amount of my spare time? In 2014?
+
+ - I started to become OBSESSED with process
+ - To be more specific, I started to become obsessed with MINIMIZING process
+   - Just getting things to work isn't good enough anymore
+   - I want to look back at my work and say "yes, this is elegant, this is pure. I'm proud of this."
+   - This just isn't a sensation I get with C++ and assembler blobs.
+     - Now of course, some of this is necessary
+     - Concretions for our abstractions, the things we depend on, don't just materialize out of thin air
+     - But the balance just doesn't feel right.
+
+ - Let's talk about video compression
+   - What is video?
+     - A regular sequence of images
+       - And by "regular" I mean regular intervals
+
  - Chronological order of events:
    - Tried SNES dev at 15, couldn't do it
    - Did some C64 stuff, that was better
