@@ -27,6 +27,8 @@ yoloswag
    - What is video?
      - A regular sequence of images
        - And by "regular" I mean regular intervals
+     - How might we represent a video?
+       - Obvious answer: Sequence of raw images
 
  - Chronological order of events:
    - Tried SNES dev at 15, couldn't do it
@@ -54,6 +56,20 @@ yoloswag
      - Elix was born
    - Got bit by the functional bug
    - Smash It
+
+## Additional gif links
+
+http://ogawa-special.tumblr.com/post/44389730778
+http://beastialthirst.tumblr.com/post/31577977794
+http://rekall.tumblr.com/post/53336716531
+http://rhubarbes.com/post/110259762466/bsr-02-by-peng-zhang-more-robots-here
+http://mirkokosmos.tumblr.com/post/109219246332/by-yongsub-noh
+http://cosmicwolfstorm.tumblr.com/post/107915138469/sketch2015-1-12-by-minovo-wang
+http://www.motionaddicts.com/post/40884766462/cubism
+http://www.motionaddicts.com/post/40884766462/cubism
+http://bubblegumcrash.tumblr.com/post/87678344788/patlabor-1
+http://cosmicwolfstorm.tumblr.com/post/77517558988/cyber-city-oedo-808
+http://jump-gate.tumblr.com/post/66510035351
 
 ## Notes
 
