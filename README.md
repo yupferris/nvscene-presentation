@@ -226,16 +226,57 @@ yoloswag
      - Only SNES code would have to be the video replayer
      - Of course, this meant the video would have to be simple enough to be replayable on SNES and fit
        in a standard 4mb max cart
-   - Nu
-     - SNES tracker
-     - Started designing awesome super snes tool
-       - Emulated video hardware
-       - Auto resource- and VRAM-management
-         - Try to find old sketch?
-     - Started hand-coding FX
-       - Scrollers etc
-       - Mode7 rotozoomer
-       - Lots more ideas, but the workflow sucked
+     - Yeah, it felt a bit cheap, but it was also something I hadn't seen before on stock SNES
+       - And video compression wasn't something I'd ever done before either
+       - I also wanted to try making automated tools for VRAM management anyways
+         - I mean, more than half of a demo for an oldschool platform seems to just be moving data
+           into memory before you display it
+         - Even if you're doing CPU effects there's still lots of bookkeeping between them
+         - Maybe there was some useful knowledge hidden in video compression techniques to help me solve
+           that problem in the long run (spoiler alert: there was, and we'll get to that!)
+       - So it really just sounded super fun!!
+ - Let's talk about video compression
+   - What is video?
+     - A regular sequence of images
+       - And by "regular" I mean regular intervals
+     - How might we represent a video?
+       - Obvious answer: Sequence of raw images
+         - Let's start with that on SNES as a proof of concept, and go from there
+         - I made a quick 5-second test with two rotating triangles
+         - Sequence of raw images
+         - Turns out the DMA can handle about 3kb or so of data per frame
+         - This was actually enough for these images, at least in 4-color modes (TODO: Maybe add a section in the beginning about SNES specs, perhaps even like a commercial? :D)
+         - So yeah, it worked!
+           - ...but it was 3mb.
+           - Time to get to work!!
+       - Delta encoding (data compression basics)
+         - Let's take a sequence of numbers
+         - 0 1 2 3 4 5 6 7
+         - These are 8 unique numbers, so you'd think it takes 8 symbols to represent them
+         - But what if we could apply some reversible transform on them?
+         - We could for instance represent the deltas between them, like this:
+         - 0 1 1 1 1 1 1 1
+         - Woah, suddenly our sequence has only 2 unique symbols
+         - Suddenly it's not much of a leap to look at it like this:
+         - 0 1
+         - As long as we know there are 8 numbers, this is all we need to recreate the sequence
+       - This is exactly how video compression works!
+       - Temporal delta encoding
+         - Store a keyframe
+           - A single raw, uncompressed image
+         - Store subsequent frames as a delta from the previous frame
+         - Typically the differences between frames have much less data than full frames
+           - Even when those differences are changes in tile/map data
+       - Now I won't go too much farther into the details of my implementation
+         - I've got something much more interesting to show you about the next demo, so I'd like to get to that :)
+         - It was written in a rush, and probably could've been done a bit better
+         - I still had to drop the framerate in half to reduce size
+         - Turns although the DMA can push 3kb to VRAM each frame, this number drops significantly
+           when trying to do lots of smaller DMA runs, due to setup overhead
+         - This meant I had to tweak the original content until it played nicely with the compressor
+         - BUT, I was able to shrink it down without many visible artifacts
+           - There are SOME, but you gotta know what to look for :)
+         - So let's watch the demo and see what it looked like in the end
    - Nu
      - Cramped for time
      - Video
@@ -276,13 +317,6 @@ yoloswag
      - Now of course, some of this is necessary
      - Concretions for our abstractions, the things we depend on, don't just materialize out of thin air
      - But the balance just doesn't feel right.
-
- - Let's talk about video compression
-   - What is video?
-     - A regular sequence of images
-       - And by "regular" I mean regular intervals
-     - How might we represent a video?
-       - Obvious answer: Sequence of raw images
 
 ## Additional gif links
 
