@@ -373,6 +373,7 @@ yoloswag
          - A couple more opcodes are introduced:
            - EndOfFrame
            - EndOfTransmission
+         - Quick sample frame
          - Now a general form is starting to merge
            - I generate a large stream of these instructions and store them in the cartridge
            - On the SNES, I keep a "program counter" that initially points to the start of the data
@@ -381,7 +382,10 @@ yoloswag
            - This reduces the compression problem to producing a stream of these instructions,
              based on deltas between image frames
            - It works because the SNES has a slow CPU, but plenty of ROM to spare!
-       - Now I won't go too much farther into the details of Nu's implementation
+       - Now I just need content
+         - Here's a trick for getting really good ideas for content
+           - Look at Beeple's crap
+       - I won't go too much farther into the details of Nu's implementation
          - I've got something much more interesting to show you about the next demo, so I'd like to get to that :)
          - It was written in a rush, and probably could've been done a bit better
          - I still had to drop the framerate in half to reduce size
