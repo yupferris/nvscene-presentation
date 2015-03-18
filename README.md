@@ -267,7 +267,28 @@ yoloswag
          - Store subsequent frames as a delta from the previous frame
          - Typically the differences between frames have much less data than full frames
            - Even when those differences are changes in tile/map data
-       - Now I won't go too much farther into the details of my implementation
+       - Basic implementation
+         - So now that I know what my deltas are, how will I encode them?
+         - In the case of the SNES, as long as you use only one video mode, you really only need to change the
+           contents of VRAM and CGRAM
+         - Then I just need to make a big dataset that represents what changes I'll make every frame
+         - This could be implemented as a little virtual machine
+           - LoadPaletteData address length data
+           - LoadVramData address length data
+         - Then I could just have sequences of those for each frame
+           - But how do I know when to break each frame? Stop the animation?
+         - A couple more opcodes are introduced:
+           - EndOfFrame
+           - EndOfTransmission
+         - Now a general form is starting to merge
+           - I generate a large stream of these instructions and store them in the cartridge
+           - On the SNES, I keep a "program counter" that initially points to the start of the data
+           - Each frame I call an update method that simulates these virtual machine instructions
+             until either EndOfFrame or EndOfTransmission is reached, then it returns
+           - This reduces the compression problem to producing a stream of these instructions,
+             based on deltas between image frames
+           - It works because the SNES has a slow CPU, but plenty of ROM to spare!
+       - Now I won't go too much farther into the details of Nu's implementation
          - I've got something much more interesting to show you about the next demo, so I'd like to get to that :)
          - It was written in a rush, and probably could've been done a bit better
          - I still had to drop the framerate in half to reduce size
@@ -277,11 +298,25 @@ yoloswag
          - BUT, I was able to shrink it down without many visible artifacts
            - There are SOME, but you gotta know what to look for :)
          - So let's watch the demo and see what it looked like in the end
-   - Nu
-     - Cramped for time
-     - Video
-     - Typical demo workflow (GL, rocket)
-     - Elix was born
+   - After this, I needed a bit of a break
+     - I had learned a TON and the demo was ultimately a success, but I needed some time off for a bit
+     - Still kept the ideas I learned from video compression in the back of my head
+   - Fast-forward again to August
+     - I kept thinking about the compression ideas and sync tool
+     - The virtual machine approach also fascinated me, and I felt like there was more there to exploit
+     - The dream was still to make a more proper demo with CPU-coded effects, but use these video compression
+       techniques to handle all of the VRAM/CGRAM management
+     - Then it hit me - why stop with chunks of memory?
+       - I have a per-frame virtual machine now
+       - I can make it do whatever I want per frame
+       - It can change video modes and hardware states in addition to moving memory
+       - Here's the kicker: it only takes one opcode!!
+         - StoreByte addr value
+       - This is enough to generalize all of the hardware state changes you need to make beyond
+         moving memory, since you just write to the hardware registers!
+         - Technically it's even possible to drop the other opcodes and just use this one
+           - But it's faster not to
+           - And that's not important
    - Got bit by the functional bug
    - Smash It
 
@@ -299,7 +334,6 @@ yoloswag
        you're speaking its "native tongue."
      - No standard libs
      - Bare metal
-
    - This in itself isn't so much a problem, but it does mean lots of little things have to be perfect.
      - And they WILL go wrong.
    - This means lots of iterations modifying the code.
@@ -308,15 +342,6 @@ yoloswag
 
  - Am I supposed to meet all of my requirements this way?
    - Seriously? One coder in a reasonable amount of my spare time? In 2014?
-
- - I started to become OBSESSED with process
- - To be more specific, I started to become obsessed with MINIMIZING process
-   - Just getting things to work isn't good enough anymore
-   - I want to look back at my work and say "yes, this is elegant, this is pure. I'm proud of this."
-   - This just isn't a sensation I get with C++ and assembler blobs.
-     - Now of course, some of this is necessary
-     - Concretions for our abstractions, the things we depend on, don't just materialize out of thin air
-     - But the balance just doesn't feel right.
 
 ## Additional gif links
 
