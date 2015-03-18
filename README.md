@@ -77,6 +77,13 @@ yoloswag
              changing its configuration every scanline, which is used for some awesome visual effects
            - It also has the infamous "Mode 7" which was used to make pseudo-3D visuals in games like
              Mario Kart and Tales of Phantasia.
+         - Now most of these units are connected only to the cpu via very restricted interfaces
+           - Transferring data between them, which you have to do a lot of, is very slow
+           - As it turns out, the system also contains an answer for this proble:
+             - DMA!!
+               - DMA stands for Direct Memory Access
+               - This is a dedicated hardware unit for copying data from place to place, bypassing
+                 the cpu completely
 
    - Intro to coding on oldschool systems
      - When you program on computers today, you might write some code like this:
@@ -106,9 +113,10 @@ yoloswag
 
  - Chronological order of events:
    - 1991
-     - SNES released August 23
-     - Parents bought one
-     - I was born
+     - In 1991, three fateful events occurred that changed the world as we know it forever:
+       - SNES released in North America August 23
+       - Parents bought one
+       - I was born
    - Childhood
      - Played loads of SNES
        - Super Mario World
@@ -126,7 +134,7 @@ yoloswag
      - Played more SNES, this time with even more games!!
      - Then I REALLY wanted to make games for this thing
      - WAY too hard
-   - FF to 2008
+   - 2008-~2011
      - By now had been making a few demos
        - Youth Uprising
        - First demoparty (NVScene 2008!!!)
@@ -157,6 +165,7 @@ yoloswag
          right next to where they were used
      - Kickassembler
        - Assembler with a javascript-like meta-language on top
+         - Show Kickassembler sample code
        - This was my first taste of metaprogramming on oldschool platforms
        - Totally fell in love with it
        - While this was a big help, I STILL lacked the organizational skills necessary to
@@ -180,10 +189,12 @@ yoloswag
    - Jan. 2012
      - While home for Christmas, I was making some gameboy music
      - Decided to try my hand at some Gameboy dev
-     - At a party, my laptop was stolen
+       - Again nothing too fancy, some scrolling stuff etc
+     - At a party a couple weeks later, my laptop was stolen
      - Bought a replacement netbook to have SOMETHING
      - Couldn't continue the PC demo, as the new computer wasn't powerful enough
      - But, I could do a Gameboy demo instead! Yeah!!
+
    - Gameboy demo workflow
      - Started doing a few effects
        - Some simple tests, like smiley faces moving around onscreen etc
@@ -193,8 +204,8 @@ yoloswag
          - But I still did for dataset generation, as I was quite used to it by then
          - However, when generating the twister bitmap, it took WAY too much time!!
        - I was really into writing compilers at the time
-         - Working at Outracks (now called Fuse) where we developed a graphics programming
-           language called Uno for doing graphics
+         - Working at Outracks (now called Fuse) where we developed a programming
+           language called Uno for doing graphics and shaders with less hassle and plumbing
        - How hard could it by to write my own assembler, with a meta-language built-in?
        - First place to start was to do a normal assembler, without metaprogramming facilities
        - Got that working in C#
@@ -203,7 +214,7 @@ yoloswag
          - Show code from Demon Blood
        - This was my second taste of metaprogramming on oldschool platforms
        - The C# hosting lended itself very well to modularization
-         - Effects, header, interrupts, etc. in diffent files
+         - Effects, header, interrupts, etc. in different files
        - This was enough, time to finish the demo!!
    - Demon Blood
      - Released at Pixel Jam 2012
@@ -211,6 +222,8 @@ yoloswag
      - Generally considered the "host assembler in strings" a success in terms of metaprogramming
      - It really showed the importance of having better process and tooling, and how powerful
        investment in those areas can be!
+
+ - Assembler Round 2
    - Did other stuff for awhile
    - FF to summer 2013
      - After Demon Blood, I really wanted to extend the assembler with lots of different CPU architectures
@@ -232,6 +245,7 @@ yoloswag
      - All of this was super motivating, but it took a lot of time
      - I started coming up with tools to help handle moving stuff in and out of memory, syncing, etc
      - But before I could even start on that, there were more pressing unknowns, in particular:
+
    - Music
      - SNES audio hardware
        - Isolated unit
@@ -277,9 +291,11 @@ yoloswag
        - Build a frontend
        - Show tool
    - Now the music tool didn't have everything I wanted, BUT what it did have was WYHIWYG, and that's RAD.
-   - This is about the time where I was just super stoked at what I had working
+
+ - Be Rad
+   - This is about the time where I was just super stoked about what I had working
      - Decided to commit to a demo the next Easter
-   - Lo and behold, we entered crunch time at work, and this was all put on hold
+   - Lo and behold, we entered crunch time at work, and this had to wait for a bit
    - Wasn't able to pick it up again until about 3 weeks before Easter
      - I REALLY wanted to release something tho!!
      - Started thinking of ways I could possibly do a demo in 3 weeks
@@ -309,7 +325,8 @@ yoloswag
          - Maybe there was some useful knowledge hidden in video compression techniques to help me solve
            that problem in the long run (spoiler alert: there was, and we'll get to that!)
        - So it really just sounded super fun!!
- - Let's talk about video compression
+
+ - Video Compression
    - What is video?
      - A regular sequence of images
        - And by "regular" I mean regular intervals
@@ -341,6 +358,8 @@ yoloswag
          - Store subsequent frames as a delta from the previous frame
          - Typically the differences between frames have much less data than full frames
            - Even when those differences are changes in tile/map data
+
+     - Representing video on SNES
        - Basic implementation
          - So now that I know what my deltas are, how will I encode them?
          - In the case of the SNES, as long as you use only one video mode, you really only need to change the
@@ -372,6 +391,10 @@ yoloswag
          - BUT, I was able to shrink it down without many visible artifacts
            - There are SOME, but you gotta know what to look for :)
          - So let's watch the demo and see what it looked like in the end
+           - That was my mindbaby, I did everything from the assembler to the music, and that's just the
+             coolest feeling :D
+
+ - Refining the tech
    - After this, I needed a bit of a break
      - I had learned a TON and the demo was ultimately a success, but I needed some time off for a bit
      - Still kept the ideas I learned from video compression in the back of my head
@@ -392,6 +415,7 @@ yoloswag
            - But it's faster not to
            - And that's not important
      - This is awesome, but it still didn't "go all the way" for me
+
    - Cracking the code
      - Now I had all this cool tech
      - The problem was again reduced to generating a stream of instructions, but using images
@@ -410,16 +434,17 @@ yoloswag
        - I remember sitting there thinking "man, there's so much data here..."
        - "...and it's all so small, because it doesn't store full files, it stores diffs between
          versions."
-       - "All you need is an empty folder, and you can play back the history, diff by diff,
-         like a bunch of little..."
+       - "All you need is an empty folder and the git data structures, and you can play back the
+         history, diff by diff... just like a bunch of little..."
        - "OPCODES!!"
        - The realization was so simple. All I needed to do was model the hardware state with a
          data structure
          - The hardware registers
+           - Preferably "unrolled" as semantic information, not packed into bits and bytes
          - VRAM contents
          - CGRAM contents
        - If I generated one of these structures for every frame that would run on the snes,
-         then I can diff all of the structures
+         then I can do diffs from each one to the following one
        - These diffs can then be encoded as opcodes that update the actual hardware state
          to match the encoded data structure
        - And I can generate these states
@@ -427,11 +452,13 @@ yoloswag
          - Way.
          - I.
          - Want.
+
    - Smash It
      - For the sake of time, I'll cut story time a bit short and just show you the final
        result this time
      - Show Smash It source, live sync, and building process
      - Play demo in emu
+
    - Conclusion
      - So this has been my journey into SNES dev, using unorthodox techniques and functional
        programming to make some pretty neat little demos.
