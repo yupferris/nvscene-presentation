@@ -48,8 +48,8 @@ yoloswag
            - There are also other things here like controller port circuitry, timers, etc.,
              but we don't need to look at those for now
          - Below that is the cartridge
-           - In most cases this is just a board with a single chip containing the program code, and
-             nothing more
+           - In most cases this is just a board with a chip containing the program code, a memory mapper,
+             and nothing more
            - Many games had extra save memory in here
            - It was also not uncommon to see extra processors, tile decompressors, and audio chips
              here as well!
@@ -98,9 +98,10 @@ yoloswag
      - As you can probably tell, I'm not a huge fan of this
        - Some people are, but I'm not
        - At least not anymore
-       - It took me a long time to come up with a way to work that I really do like, that
+       - It took me a long time to come up with a way to approach problems that I really do like, that
          combines some of the low-level hackiness with some high-level systems design concepts
          I know and love
+       - And that's precisely what I'll be talking to you about.
        - So let's start from the beginning.
 
  - Chronological order of events:
