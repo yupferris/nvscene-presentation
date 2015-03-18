@@ -111,7 +111,7 @@ yoloswag
        - And that's precisely what I'll be talking to you about.
        - So let's start from the beginning.
 
- - Chronological order of events:
+ - Chronology:
    - 1991
      - In 1991, three fateful events occurred that changed the world as we know it forever:
        - SNES released in North America August 23
