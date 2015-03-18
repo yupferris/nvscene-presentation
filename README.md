@@ -2,14 +2,93 @@
 yoloswag
 
 ## Outline
+ - Introduction
+   - Hello everyone, thanks for coming!
+   - My name is Jake
+     - Also known as Ferris
+     - I LOVE SUPER NINTENDO
+     - Active in the demogroups:
+       - Youth Uprising
+       - Outracks
+       - Most recently Elix, an exclusively-SNES demogroup I formed April 2014
+         - Released two demos, winning 1st place in two compos
+         - More to come!
+     - I'm OBSESSED with process
+       - Just getting things to work isn't good enough
+       - I have to learn something new during every project
+       - I have to optimize/minimize some part of the workflow
+         - Even if it's unorthodox
+           - Scratch that. ESPECIALLY if it's unorthodox
+         - Even if that means loads of work elsewhere
+         - But it's super INTERESTING work!!
+   - This talk will be about my journey into SNES development, making demos for
+     the platform, and how I've arrived at my current toolchain built with
+     functional programming in F#!!
+   - So let's dig in :D
+
  - SNES block diagram
 
  - Chronological order of events:
-   - Tried SNES dev at 15, couldn't do it
+   - 1991
+     - SNES released August 23
+     - Parents bought one
+     - I was born
+   - Childhood
+     - Played loads of SNES
+       - Super Mario World
+       - Clay Fighter
+       - Top Gear
+       - Zelda
+       - Secret of Mana
+       - My personal favorite, Chrono Trigger
+     - Got other systems, but kept coming back to SNES
+     - Always wanted to make my own games
+   - ~2000ish
+     - Started learning computer programming
+   - ~2004ish
+     - Discovered emulators
+     - Played more SNES, this time with even more games!!
+     - Then I REALLY wanted to make games for this thing
+     - WAY too hard
+   - FF to 2008
+     - By now had been making a few demos
+       - Youth Uprising
+       - First demoparty (NVScene 2008!!!)
+       - Started on 4k's
+     - 4k's involved lots of assembler, which led me to try SNES dev again
+     - Started looking into SNES dev again
+     - Still too hard
    - Did some C64 stuff, that was better
    - Back to SNES, not much progress
-   - Kickassembler
-   - Tried Atari VCS, made a custom sound driver, a few FX, but music sucked
+     - Got a scrolling background and some joypad input
+     - Hardly anything useful
+     - I did start to see how helper libraries etc might work
+     - Still didn't really have the organizational skills necessary to do anything big
+   - Back to C64 again
+     - Made a couple test demos, nothing very good
+     - One of the big problems in workflow was data processing
+     - Writing code wasn't a problem, but converting images etc to the platform's native formats
+       was a pain and usually involved lots of separate tools
+       - They tended to add lots of extra steps to the build process
+       - Would've been awesome if I could just pack these converters etc with my effect code,
+         right next to where they were used
+     - Kickassembler
+       - Assembler with a javascript-like meta-language on top
+       - This was my first taste of metaprogramming on oldschool platforms
+       - Totally fell in love with it
+       - While this was a big help, I STILL lacked the organizational skills necessary to
+         do anything big!
+   - Tried Atari VCS
+     - Same CPU, "simpler" hardware
+     - A few small FX
+     - Made a custom sound driver
+     - But music sucked
+       - Hardware limitations make all music terribly out of tune
+       - ROM size limitations made usual good-sounding chiptune tricks very difficult
+   - Left oldschool for awhile.
+   - FF to Nov. 2011
+     - I was asked to make the invitation demo for @party 2012
+     - Started some PC work, nothing special
    - Laptop stolen, tried Gameboy dev
    - Kickassembler too slow, custom assembler
    - Demon Blood
@@ -30,8 +109,6 @@ yoloswag
      - Elix was born
    - Got bit by the functional bug
    - Smash It
-
- - Introduction
 
  - Requirements for a demo
    - Needs to run on SNES
@@ -75,6 +152,7 @@ yoloswag
          - Missing filtered echo, noise
    - Make my own!
      - Make an emulator
+       - Remember I LOVE making these!!
      - Build a frontend
 
  - Am I supposed to meet all of my requirements this way?
