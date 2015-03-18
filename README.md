@@ -8,6 +8,24 @@ yoloswag
    - Has to have awesome sync
    - Has to look great
 
+ - Music
+   - SNES audio hardware
+     - TODO
+   - Existing SNES music tools
+     - Official tools
+       - Extremely hard (if not impossible) to find
+       - Not that they would run on anything modern anyways
+     - XMSNES
+       - Converter tool from old tracker format to SNES blob + driver
+       - Can track in any tracker that supports .xm
+       - Hard to find
+       - Not exactly WYHIWYG
+         - Doesn't cover hardware compression
+       - Doesn't support additional SNES features
+         - Missing filtered echo, noise
+   - Make my own!
+     - 
+
  - Typical oldschool demo development process
    - Massive amounts of assembler
 
