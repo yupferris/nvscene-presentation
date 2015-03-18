@@ -26,8 +26,6 @@ yoloswag
      functional programming in F#!!
    - So let's dig in :D
 
- - SNES block diagram
-
  - Chronological order of events:
    - 1991
      - SNES released August 23
@@ -59,16 +57,23 @@ yoloswag
      - Started looking into SNES dev again
      - Still too hard
    - Did some C64 stuff, that was better
+     - Easier to find resources
+     - Better emulators
+     - Lots more demos to look at and get inspired by
+     - But it never really "clicked" for me, so I dropped it eventually
    - Back to SNES, not much progress
      - Got a scrolling background and some joypad input
      - Hardly anything useful
      - I did start to see how helper libraries etc might work
-     - Still didn't really have the organizational skills necessary to do anything big
+     - Didn't really have the organizational skills necessary to do anything big
+   - Dropped that stuff for awhile; did some other things
    - Back to C64 again
      - Made a couple test demos, nothing very good
      - One of the big problems in workflow was data processing
      - Writing code wasn't a problem, but converting images etc to the platform's native formats
        was a pain and usually involved lots of separate tools
+       - Most of which were either really buggy or written by me
+         - (mostly both)
        - They tended to add lots of extra steps to the build process
        - Would've been awesome if I could just pack these converters etc with my effect code,
          right next to where they were used
@@ -78,30 +83,96 @@ yoloswag
        - Totally fell in love with it
        - While this was a big help, I STILL lacked the organizational skills necessary to
          do anything big!
+   - Dropped this stuff. Again.
    - Tried Atari VCS
      - Same CPU, "simpler" hardware
      - A few small FX
      - Made a custom sound driver
      - But music sucked
        - Hardware limitations make all music terribly out of tune
+         - Oscillator pitch is determined by taking a 30khz oscillator, divided by some number
+         - Not even the different waveforms available were in tune
        - ROM size limitations made usual good-sounding chiptune tricks very difficult
-   - Left oldschool for awhile.
+   - And again, I left for awhile.
    - FF to Nov. 2011
      - I was asked to make the invitation demo for @party 2012
      - Started some PC work, nothing special
-   - Laptop stolen, tried Gameboy dev
-   - Kickassembler too slow, custom assembler
+   - Jan. 2012
+     - While home for Christmas, I was making some gameboy music
+     - Decided to try my hand at some Gameboy dev
+     - At a party, my laptop was stolen
+     - Bought a replacement netbook to have SOMETHING
+     - Couldn't continue the PC demo, as the new computer wasn't powerful enough
+     - But, I could do a Gameboy demo instead! Yeah!!
+   - Gameboy demo workflow
+     - Started doing a few effects
+       - Some simple tests, like smiley faces moving around onscreen etc
+       - Twister
+     - Workflow was basically the same as with C64
+       - CPU's were different, so I couldn't use Kickassembler
+         - But I still did for dataset generation, as I was quite used to it by then
+         - However, when generating the twister bitmap, it took WAY too much time!!
+       - I was really into writing compilers at the time
+         - Working at Outracks (now called Fuse) where we developed a graphics programming
+           language called Uno for doing graphics
+       - How hard could it by to write my own assembler, with a meta-language built-in?
+       - First place to start was to do a normal assembler, without metaprogramming facilities
+       - Got that working in C#
+       - Realized for the invite I didn't have enough time to do the meta-language AND finish the demo
+       - But, I could host the assembler code inside C# files using verbatim strings
+         - Show code from Demon Blood
+       - This was my second taste of metaprogramming on oldschool platforms
+       - The C# hosting lended itself very well to modularization
+         - Effects, header, interrupts, etc. in diffent files
+       - This was enough, time to finish the demo!!
    - Demon Blood
-   - Revamped assembler
-   - Started hand-coding FX for a demo
-     - Scrollers etc
-     - Mode7 rotozoomer
-     - Lots more ideas, but the workflow sucked
-   - SNES tracker
-   - Started designing awesome super snes tool
-     - Emulated video hardware
-     - Auto resource- and VRAM-management
-       - Try to find old sketch?
+     - Released at Pixel Jam 2012
+     - 2nd place
+     - Generally considered the "host assembler in strings" a success in terms of metaprogramming
+   - Did other stuff for awhile
+   - FF to summer 2013
+     - After Demon Blood, I really wanted to extend the assembler with lots of different CPU architectures
+     - This would allow me to move all my code to one toolchain
+       - C64, Atari, SNES, everything
+     - As some of the code was messy, I decided to start from scratch
+     - Developed gameboy support and SNES support in parallel
+       - Already had a large bit of gameboy source to test with (Demon Blood)
+       - SNES had the most complicated instruction set and mem layout, so that was a good choice to start
+         with at the same time
+   - September 2013
+     - First SNES rom!!
+     - This was super motivating, so I started to make a SNES demo
+       - Would eventually become Nu by Elix
+     - But I wasn't there yet, there were still some unknowns, in particular...
+   - Music
+     - SNES audio hardware
+       - TODO
+     - Existing SNES music tools
+       - Official tools
+         - Extremely hard (if not impossible) to find
+         - Not that they would run on anything modern anyways
+       - XMSNES
+         - Converter tool from old tracker format to SNES blob + driver
+         - Can track in any tracker that supports .xm
+         - Hard to find
+         - Not exactly WYHIWYG
+           - Doesn't cover hardware compression
+         - Doesn't support additional SNES features
+           - Missing filtered echo, noise
+     - Make my own!
+       - Make an emulator
+         - Remember I LOVE making these!!
+       - Build a frontend
+   - Nu
+     - SNES tracker
+     - Started designing awesome super snes tool
+       - Emulated video hardware
+       - Auto resource- and VRAM-management
+         - Try to find old sketch?
+     - Started hand-coding FX
+       - Scrollers etc
+       - Mode7 rotozoomer
+       - Lots more ideas, but the workflow sucked
    - Nu
      - Cramped for time
      - Video
@@ -109,6 +180,8 @@ yoloswag
      - Elix was born
    - Got bit by the functional bug
    - Smash It
+
+ - SNES block diagram
 
  - Requirements for a demo
    - Needs to run on SNES
@@ -134,26 +207,6 @@ yoloswag
    - This means lots of iterations modifying the code.
    - And they're long.
      - Change code, rebuild, start up emulator, run, repeat
-
- - Music
-   - SNES audio hardware
-     - TODO
-   - Existing SNES music tools
-     - Official tools
-       - Extremely hard (if not impossible) to find
-       - Not that they would run on anything modern anyways
-     - XMSNES
-       - Converter tool from old tracker format to SNES blob + driver
-       - Can track in any tracker that supports .xm
-       - Hard to find
-       - Not exactly WYHIWYG
-         - Doesn't cover hardware compression
-       - Doesn't support additional SNES features
-         - Missing filtered echo, noise
-   - Make my own!
-     - Make an emulator
-       - Remember I LOVE making these!!
-     - Build a frontend
 
  - Am I supposed to meet all of my requirements this way?
    - Seriously? One coder in a reasonable amount of my spare time? In 2014?
