@@ -7,6 +7,10 @@ yoloswag
    - My name is Jake
      - Also known as Ferris
      - I LOVE SUPER NINTENDO
+     - My favorite things to code are:
+       - Compilers and runtimes for new programming languages
+       - Emulators
+       - Demos
      - Active in the demogroups:
        - Youth Uprising
        - Outracks
@@ -94,6 +98,8 @@ yoloswag
          - Not even the different waveforms available were in tune
        - ROM size limitations made usual good-sounding chiptune tricks very difficult
    - And again, I left for awhile.
+   - As you can tell, there's a really common theme where I would start some stuff,
+     get a bit farther than I did last time, and then drop it again.
    - FF to Nov. 2011
      - I was asked to make the invitation demo for @party 2012
      - Started some PC work, nothing special
@@ -129,6 +135,8 @@ yoloswag
      - Released at Pixel Jam 2012
      - 2nd place
      - Generally considered the "host assembler in strings" a success in terms of metaprogramming
+     - It really showed the importance of having better process and tooling, and how powerful
+       investment in those areas can be!
    - Did other stuff for awhile
    - FF to summer 2013
      - After Demon Blood, I really wanted to extend the assembler with lots of different CPU architectures
@@ -142,27 +150,82 @@ yoloswag
    - September 2013
      - First SNES rom!!
      - This was super motivating, so I started to make a SNES demo
-       - Would eventually become Nu by Elix
-     - But I wasn't there yet, there were still some unknowns, in particular...
+       - Did some test FX
+         - Menger rotozoomer
+         - Lots of image processing/logos
+         - Scrollers
+         - Proof-of-concept RGB distortion
+     - All of this was super motivating, but it took a lot of time
+     - I started coming up with tools to help handle moving stuff in and out of memory, syncing, etc
+     - But before I could even start on that, there were more pressing unknowns, in particular:
    - Music
      - SNES audio hardware
-       - TODO
-     - Existing SNES music tools
+       - Isolated unit
+       - The heart is the DSP
+         - 8 channels
+         - Stereo!
+         - Can play compressed samples
+         - Noise gen
+         - Echo unit
+           - Which even has a filter!
+       - Has its own CPU
+         - S-SMP
+         - Very 8088-like instruction set
+         - Actually lovely to code on
+           - Especially compared to the SNES' wonky CPU!
+       - Both the DSP and audio CPU share their chunk of memory
+         - 64kb, only accessible to the CPU and DSP
+         - This is a lot for oldschool platforms, but feels awfully small when you have to squeeze your
+           music playing code and your samples together in there!
+     - All in all, this hardware should act basically as a standalone tracker module player
+     - So then I just need to find one!
+     - The search for the SNES tracker
        - Official tools
+         - Clearly they had to use something back in the day
          - Extremely hard (if not impossible) to find
-         - Not that they would run on anything modern anyways
+         - Official tools from Nintendo never seemed to have leaked
+           - Not that they would run on anything modern anyways
+         - Lots of software houses used their own anyways
        - XMSNES
          - Converter tool from old tracker format to SNES blob + driver
          - Can track in any tracker that supports .xm
          - Hard to find
+           - But I DID find it and it did work!
          - Not exactly WYHIWYG
            - Doesn't cover hardware compression
          - Doesn't support additional SNES features
            - Missing filtered echo, noise
+     - Just didn't feel right making music this way
      - Make my own!
+       - Aaaaand that's what I did all October and November.
        - Make an emulator
-         - Remember I LOVE making these!!
+       - Make a music driver (with my custom assembler of course!)
        - Build a frontend
+       - Show tool
+   - Now the music tool didn't have everything I wanted, BUT what it did have was WYHIWYG, and that's RAD.
+   - This is about the time where I was just super stoked at what I had working
+     - Decided to commit to a demo the next Easter
+   - Lo and behold, we entered crunch time at work, and this was all put on hold
+   - Wasn't able to pick it up again until about 3 weeks before Easter
+     - I REALLY wanted to release something tho!!
+     - Started thinking of ways I could possibly do a demo in 3 weeks
+       - This demo had to be SNES
+         - Great, I have tools for that!
+       - This demo had to have awesome music
+         - Yep, got the tools, let's do it!
+       - Had to have awesome sync and look great
+         - Uhhhhh...
+   - At this point I really only had a few lame test effects and no real thought as to
+     how I would do the syncing/linking steps
+     - I had learned this part was surprisingly difficult after Demon Blood and knew I
+       would have to get smarter if I was going to work fast.
+   - After banging my head agains the wall for a few days, I realized there might be something
+     I could do after all, that would satisfy all these criteria:
+   - Compressed video
+     - With video I could use my normal demo workflow to do visuals, then process and stuff in a SNES cart
+     - Only SNES code would have to be the video replayer
+     - Of course, this meant the video would have to be simple enough to be replayable on SNES and fit
+       in a standard 4mb max cart
    - Nu
      - SNES tracker
      - Started designing awesome super snes tool
@@ -182,12 +245,6 @@ yoloswag
    - Smash It
 
  - SNES block diagram
-
- - Requirements for a demo
-   - Needs to run on SNES
-   - Has to have awesome music
-   - Has to have awesome sync
-   - Has to look great
 
  - Typical oldschool demo development process
    - When you program on computers today, you might write some code like this:
