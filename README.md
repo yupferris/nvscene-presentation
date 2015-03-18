@@ -317,8 +317,62 @@ yoloswag
          - Technically it's even possible to drop the other opcodes and just use this one
            - But it's faster not to
            - And that's not important
-   - Got bit by the functional bug
+     - This is awesome, but it still didn't "go all the way" for me
+   - Cracking the code
+     - Now I had all this cool tech
+     - The problem was again reduced to generating a stream of instructions, but using images
+       supplemented with hardware reg's didn't sound too sexy
+     - What I really wanted was full control of the hardware
+       - Preferrably from a high-level language
+       - Maybe even a functional one!
+     - So, I started thinking about what my ideal SNES coding environment could be like
+     - Let's start with this:
+       - Imagine I could program in F#
+       - Using pure, immutable data
+       - Composing with code and syncing with Ableton Live
+     - And all I have to do to make it work is generate a stream of instructions
+     - Then, it clicked - again
+     - I was at work using Git to check our commit history
+       - I remember sitting there thinking "man, there's so much data here..."
+       - "...and it's all so small, because it doesn't store full files, it stores diffs between
+         versions."
+       - "All you need is an empty folder, and you can play back the history, diff by diff,
+         like a bunch of little..."
+       - "OPCODES!!"
+       - The realization was so simple. All I needed to do was model the hardware state with a
+         data structure
+         - The hardware registers
+         - VRAM contents
+         - CGRAM contents
+       - If I generated one of these structures for every frame that would run on the snes,
+         then I can diff all of the structures
+       - These diffs can then be encoded as opcodes that update the actual hardware state
+         to match the encoded data structure
+       - And I can generate these states
+         - Any.
+         - Way.
+         - I.
+         - Want.
    - Smash It
+     - For the sake of time, I'll cut story time a bit short and just show you the final
+       result this time
+     - Show Smash It source, live sync, and building process
+     - Play demo in emu
+   - Conclusion
+     - So this has been my journey into SNES dev, using unorthodox techniques and functional
+       programming to make some pretty neat little demos.
+     - What's next
+       - CPU-based effects, beyond what this powerful system can handle
+       - All I need is a "call into user code" instruction
+       - Finishing up the music tool (and releasing it, open source!)
+       - At least one more demo, bigger and badder than ever
+         - Followed by a source release of that and the previous prods
+         - Because #yolo
+     - So that's where I'm at. I hope you guys have enjoyed this ride as much as I have. Thanks
+       again for coming, thanks to the organizers and NVidia for putting on this whole event. It
+       really means a ton to me to come back to NVScene all these years after being so inspired
+       the first time around and be able to give a talk like this. So yeah, if you have any questions
+       or comments I can open up the floor and take those now.
 
  - SNES block diagram
 
@@ -339,9 +393,6 @@ yoloswag
    - This means lots of iterations modifying the code.
    - And they're long.
      - Change code, rebuild, start up emulator, run, repeat
-
- - Am I supposed to meet all of my requirements this way?
-   - Seriously? One coder in a reasonable amount of my spare time? In 2014?
 
 ## Additional gif links
 
