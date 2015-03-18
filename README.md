@@ -2,11 +2,61 @@
 yoloswag
 
 ## Outline
+ - SNES block diagram
+
+ - Chronological order of events:
+   - Tried SNES dev at 15, couldn't do it
+   - Did some C64 stuff, that was better
+   - Back to SNES, not much progress
+   - Kickassembler
+   - Tried Atari VCS, made a custom sound driver, a few FX, but music sucked
+   - Laptop stolen, tried Gameboy dev
+   - Kickassembler too slow, custom assembler
+   - Demon Blood
+   - Revamped assembler
+   - Started hand-coding FX for a demo
+     - Scrollers etc
+     - Mode7 rotozoomer
+     - Lots more ideas, but the workflow sucked
+   - SNES tracker
+   - Started designing awesome super snes tool
+     - Emulated video hardware
+     - Auto resource- and VRAM-management
+       - Try to find old sketch?
+   - Nu
+     - Cramped for time
+     - Video
+     - Typical demo workflow (GL, rocket)
+     - Elix was born
+   - Got bit by the functional bug
+   - Smash It
+
+ - Introduction
+
  - Requirements for a demo
    - Needs to run on SNES
    - Has to have awesome music
    - Has to have awesome sync
    - Has to look great
+
+ - Typical oldschool demo development process
+   - When you program on computers today, you might write some code like this:
+     - Nice happy javascript example
+     - "Or like this.."
+     - Well, when you write code on oldschool platforms, you use assembler.
+       - This is literally machine code, but with some icky numbers replaced with happy letters.
+       - It looks like this.
+   - And there's LOADS of it.
+     - You can imagine how many little happy letters it takes to tell a machine to do what you want when
+       you're speaking its "native tongue."
+     - No standard libs
+     - Bare metal
+
+   - This in itself isn't so much a problem, but it does mean lots of little things have to be perfect.
+     - And they WILL go wrong.
+   - This means lots of iterations modifying the code.
+   - And they're long.
+     - Change code, rebuild, start up emulator, run, repeat
 
  - Music
    - SNES audio hardware
@@ -24,10 +74,8 @@ yoloswag
        - Doesn't support additional SNES features
          - Missing filtered echo, noise
    - Make my own!
-     - 
-
- - Typical oldschool demo development process
-   - Massive amounts of assembler
+     - Make an emulator
+     - Build a frontend
 
  - Am I supposed to meet all of my requirements this way?
    - Seriously? One coder in a reasonable amount of my spare time? In 2014?
@@ -47,33 +95,6 @@ yoloswag
        - And by "regular" I mean regular intervals
      - How might we represent a video?
        - Obvious answer: Sequence of raw images
-
- - Chronological order of events:
-   - Tried SNES dev at 15, couldn't do it
-   - Did some C64 stuff, that was better
-   - Back to SNES, not much progress
-   - Kickassembler
-   - Tried Atari VCS, made a custom sound driver, a few FX, but music sucked
-   - Laptop stolen, tried Gameboy dev
-   - Kickassembler too slow, custom assembler
-   - Demon Blood
-   - Revamped assembler
-   - Started hand-coding FX for a demo
-     - Scrollers etc
-     - Mode7 rotozoomer
-     - Lots more ideas, but the workflow sucked
-   - Started designing awesome super snes tool
-     - Emulated video hardware
-     - Auto resource- and VRAM-management
-       - Try to find old sketch?
-   - SNES tracker
-   - Nu
-     - Cramped for time
-     - Video
-     - Typical demo workflow (GL, rocket)
-     - Elix was born
-   - Got bit by the functional bug
-   - Smash It
 
 ## Additional gif links
 
