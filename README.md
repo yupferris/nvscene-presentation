@@ -30,6 +30,79 @@ yoloswag
      functional programming in F#!!
    - So let's dig in :D
 
+ - First things first
+   - What does the SNES look like?
+     - You'll probably recognize a SNES in this form:
+       - North American Snes picture
+     - That is, unless you grew up anywhere else in the world than here, where it looks more
+       like this:
+       - European/Japanese Snes picture
+     - Some of the REALLY hardcore SNES fans might also recognize this picture of a SNES:
+       - Schematic
+     - But for this talk, this is the representation we're gonna find most helpful:
+       - SNES block diagram
+         - Might not feel like much for all you tech heads, but it will be enough operational knowledge
+           to get this talk off the ground
+         - Starting in the center, we have the "Main System" block
+           - This represents the main system processor and working memory
+           - There are also other things here like controller port circuitry, timers, etc.,
+             but we don't need to look at those for now
+         - Below that is the cartridge
+           - In most cases this is just a board with a single chip containing the program code, and
+             nothing more
+           - Many games had extra save memory in here
+           - It was also not uncommon to see extra processors, tile decompressors, and audio chips
+             here as well!
+             - But again, we can ignore those kinds of things
+         - On the left we see the Audio block
+           - Interestingly enough, the audio unit has its own self-contained CPU and memory!
+           - We'll talk more about that later
+         - Finally, on the right, we have the Video block
+           - This consists of the PPU, or Pixel Processing Unit. This is actually two different chips
+             that work together to draw and blend layers of tiles and sprites on top of each other
+             to form the images you see on screen.
+           - The actual graphics data that represents these tiles and sprites is stored in the
+             VRAM and CGRAM
+             - VRAM, or Video RAM, stores the data for the tiles and maps that say which tiles are used
+               where on screen
+             - CGRAM, or Character Generation RAM, stores the data for the colors used by the tiles
+               in VRAM
+               - You've probably worked with or heard of paletted bitmaps before; this is where the
+                 palettes go
+               - It's got a bit of a bad name, but that's what it's called
+           - Finally there's the OAM, or Object Attribute Memory, which tells the PPU which sprites
+             are enabled, where they are on screen, which tiles they use, and so on.
+           - The graphics unit is extremely capable and supports graphics modes from 4-256 colors, with
+             1-5 layers of tiles and sprites. It can even do hardware blending and has support for
+             changing its configuration every scanline, which is used for some awesome visual effects
+           - It also has the infamous "Mode 7" which was used to make pseudo-3D visuals in games like
+             Mario Kart and Tales of Phantasia.
+
+   - Intro to coding on oldschool systems
+     - When you program on computers today, you might write some code like this:
+       - Nice happy javascript example
+       - "Or like this.."
+       - Well, when you write code on oldschool platforms, you use assembler.
+         - This is literally machine code, but with some icky numbers replaced with happy letters.
+         - It looks like this.
+     - And there's LOADS of it.
+       - You can imagine how many little happy letters it takes to tell a machine to do what you want when
+         you're speaking its "native tongue."
+       - No standard libs
+       - Bare metal
+     - This in itself isn't so much a problem, but it does mean lots of little things have to be perfect.
+       - And they WILL go wrong.
+     - This means lots of iterations modifying the code.
+     - And they're long.
+       - Change code, rebuild, start up emulator, run, repeat
+     - As you can probably tell, I'm not a huge fan of this
+       - Some people are, but I'm not
+       - At least not anymore
+       - It took me a long time to come up with a way to work that I really do like, that
+         combines some of the low-level hackiness with some high-level systems design concepts
+         I know and love
+       - So let's start from the beginning.
+
  - Chronological order of events:
    - 1991
      - SNES released August 23
@@ -245,7 +318,7 @@ yoloswag
          - I made a quick 5-second test with two rotating triangles
          - Sequence of raw images
          - Turns out the DMA can handle about 3kb or so of data per frame
-         - This was actually enough for these images, at least in 4-color modes (TODO: Maybe add a section in the beginning about SNES specs, perhaps even like a commercial? :D)
+         - This was actually enough for these images, at least in 4-color modes
          - So yeah, it worked!
            - ...but it was 3mb.
            - Time to get to work!!
@@ -372,27 +445,7 @@ yoloswag
        again for coming, thanks to the organizers and NVidia for putting on this whole event. It
        really means a ton to me to come back to NVScene all these years after being so inspired
        the first time around and be able to give a talk like this. So yeah, if you have any questions
-       or comments I can open up the floor and take those now.
-
- - SNES block diagram
-
- - Typical oldschool demo development process
-   - When you program on computers today, you might write some code like this:
-     - Nice happy javascript example
-     - "Or like this.."
-     - Well, when you write code on oldschool platforms, you use assembler.
-       - This is literally machine code, but with some icky numbers replaced with happy letters.
-       - It looks like this.
-   - And there's LOADS of it.
-     - You can imagine how many little happy letters it takes to tell a machine to do what you want when
-       you're speaking its "native tongue."
-     - No standard libs
-     - Bare metal
-   - This in itself isn't so much a problem, but it does mean lots of little things have to be perfect.
-     - And they WILL go wrong.
-   - This means lots of iterations modifying the code.
-   - And they're long.
-     - Change code, rebuild, start up emulator, run, repeat
+       or comments I can open up the floor and take those now!
 
 ## Additional gif links
 
